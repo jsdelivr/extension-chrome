@@ -1,0 +1,31 @@
+{
+  "name": "jsDelivr Extension",
+  "version": "0.1.0",
+  "description": "A jsDelivr Extension for npm and GitHub",
+  "manifest_version": 2,
+  "icons": {
+    "128": "icon.png"
+  },
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "https://github.com/*",
+    "https://www.npmjs.com/*"
+  ],
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": [
+        "https://github.com/*",
+        "https://www.npmjs.com/*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
