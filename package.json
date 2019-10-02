@@ -14,8 +14,10 @@
 	"devDependencies": {
 		"@babel/core": "^7.6.2",
 		"@babel/plugin-transform-react-jsx": "^7.3.0",
+		"@babel/plugin-transform-runtime": "^7.6.2",
 		"@babel/preset-env": "^7.6.2",
 		"@babel/register": "^7.6.2",
+		"@babel/runtime": "^7.6.2",
 		"@martin-kolarik/eslint-config": "^2.0.0",
 		"@martin-kolarik/stylelint-config": "^1.0.1",
 		"babel-eslint": "^10.0.3",
