@@ -93,13 +93,18 @@ async function init () {
 										>
 											Open in jsDelivr
 										</a>
-										<a
-											class="btn btn-outline get-repo-btn"
-											href={`https://registry.npmjs.org/${name}/-/${name}-${version}.tgz`}
-											rel="nofollow"
-										>
-											Download ZIP
-										</a>
+										{cdnUrl
+											? (
+												<a
+													class="btn btn-outline get-repo-btn"
+													href={`https://registry.npmjs.org/${name}/-/${name}-${version}.tgz`}
+													rel="nofollow"
+												>
+													Download ZIP
+												</a>
+											)
+											: null
+										}
 									</div>
 								</div>
 							</div>
