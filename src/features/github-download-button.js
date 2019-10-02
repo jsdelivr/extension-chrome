@@ -2,7 +2,7 @@ import React from 'dom-chef';
 import onDomReady from 'dom-loaded';
 
 import { isGitHub, isRepoRoot } from '../libs/page-detect';
-import { getRepoDetails } from '../libs/utils';
+import { getRepoDetails, hasJSExtension } from '../libs/utils';
 import { clippy } from '../libs/icons';
 
 import './github-download-button.css';
@@ -37,7 +37,9 @@ async function init () {
 				const packageFilesResponse = await fetch(packageFilesUrl);
 				const { default: defaultFile } = await packageFilesResponse.json();
 
-				const cdnUrl = defaultFile ? `https://cdn.jsdelivr.net/npm/${name}@${version}${defaultFile}` : '';
+				// Validate file name, since `bootstrap`
+				// has default file name without `.js` extension
+				const cdnUrl = defaultFile && hasJSExtension(defaultFile) ? `https://cdn.jsdelivr.net/npm/${name}@${version}${defaultFile}` : '';
 
 				const menu = (
 					<details class="jsd-get-repo-select-menu dropdown details-reset details-overlay">

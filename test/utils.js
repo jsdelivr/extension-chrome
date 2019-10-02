@@ -1,8 +1,9 @@
 import chai from 'chai';
 
-import { getCleanPathname, getRepoPath, getRepoDetails } from '../src/libs/utils';
+import { getCleanPathname, getRepoPath, getRepoDetails, hasJSExtension } from '../src/libs/utils';
 
 const expect = chai.expect;
+const assert = chai.assert;
 
 describe('utils', () => {
 	describe('getCleanPathname', () => {
@@ -97,6 +98,28 @@ describe('utils', () => {
 				location.href = url;
 				const details = getRepoDetails();
 				expect(details).to.deep.equal(result);
+			}
+		});
+	});
+
+	describe('hasJSExtension', () => {
+		it('should check if a file has `.js` extension in its name', () => {
+			const withJSExtension = [
+				'/dist/jquery.min.js',
+				'/slick/slick.min.js',
+			];
+
+			const withoutJSExtension = [
+				'/dist/js/bootstrap',
+				'/js/swiper',
+			];
+
+			for (const filename of withJSExtension) {
+				assert.isTrue(hasJSExtension(filename));
+			}
+
+			for (const filename of withoutJSExtension) {
+				assert.isFalse(hasJSExtension(filename));
 			}
 		});
 	});

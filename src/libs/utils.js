@@ -20,3 +20,8 @@ export const getRepoDetails = () => {
 		treeName,
 	};
 };
+
+// Check for `.js` extension
+// '/dist/index.min.js' -> true
+// '/dist/index'        -> false
+export const hasJSExtension = filename => /(\.js)$/.test(filename);
