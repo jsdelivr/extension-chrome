@@ -21,11 +21,17 @@ async function init () {
 
 				const rawPackageUrl = `https://raw.githubusercontent.com/${ownerName}/${repoName}/${treeName}/package.json`;
 				const rawPackageResponse = await fetch(rawPackageUrl);
-				const { name, version } = await rawPackageResponse.json();
+				const { name } = await rawPackageResponse.json();
 
-				if (!name && !version) {
+				if (!name) {
 					return;
 				}
+
+				const packageVersionsUrl = `https://data.jsdelivr.com/v1/package/npm/${name}`;
+				const packageVersionsResponse = await fetch(packageVersionsUrl);
+				const { tags, versions } = await packageVersionsResponse.json();
+
+				const version = tags.latest ? tags.latest : versions[0];
 
 				const packageFilesUrl = `https://data.jsdelivr.com/v1/package/npm/${name}@${version}`;
 				const packageFilesResponse = await fetch(packageFilesUrl);
