@@ -1,3 +1,6 @@
+// Functions referenced and modified from Sindre Sorhus's `refined-github` repository
+// Source: https://github.com/sindresorhus/refined-github/blob/master/source/libs/utils.ts
+
 // Remove leading and trailing slashes
 // '/user/repo'  -> 'user/repo'
 // '/user/repo/' -> 'user/repo'

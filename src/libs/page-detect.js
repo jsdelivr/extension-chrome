@@ -1,3 +1,6 @@
+// Functions referenced and modified from Sindre Sorhus's `refined-github` repository
+// Source: https://github.com/sindresorhus/refined-github/blob/master/source/libs/page-detect.ts
+
 import { getCleanPathname, getRepoPath } from './utils';
 
 export const isGitHub = () => location.hostname === 'github.com';
