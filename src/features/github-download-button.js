@@ -73,11 +73,29 @@ async function init () {
 												</div>
 											)
 											: (
-												<div class="flash flash-warn my-2 jsd-flash">
+												<div class="flash flash-warn mt-2 jsd-flash">
 													Sadly, this package doesn't have a default file set.
 												</div>
 											)
 										}
+									</div>
+									<div class="mt-2">
+										<a
+											class="btn btn-outline get-repo-btn tooltipped tooltipped-s tooltipped-multiline"
+											href={`https://www.jsdelivr.com/package/npm/${name}`}
+											target="_blank"
+											rel="nofollow"
+											aria-label={`Open ${ownerName}/${repoName} in jsDelivr website and select the files you want to use.`}
+										>
+											Open in jsDelivr
+										</a>
+										<a
+											class="btn btn-outline get-repo-btn"
+											href={`https://registry.npmjs.org/${name}/-/${name}-${version}.tgz`}
+											rel="nofollow"
+										>
+											Download ZIP
+										</a>
 									</div>
 								</div>
 							</div>
