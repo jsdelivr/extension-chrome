@@ -13,6 +13,10 @@ async function init () {
 	if (isGitHub()) {
 		if (isRepoRoot()) {
 			try {
+				if (document.querySelector('.jsd-get-repo-select-menu')) {
+					return;
+				}
+
 				const { ownerName, repoName, treeName } = getRepoDetails();
 
 				const rawPackageUrl = `https://raw.githubusercontent.com/${ownerName}/${repoName}/${treeName}/package.json`;
@@ -30,7 +34,7 @@ async function init () {
 				const cdnUrl = defaultFile ? `https://cdn.jsdelivr.net/npm/${name}@${version}${defaultFile}` : '';
 
 				const menu = (
-					<details class="dropdown details-reset details-overlay">
+					<details class="jsd-get-repo-select-menu dropdown details-reset details-overlay">
 						<summary class="btn btn-sm ml-2 jsd-btn-orange">
 							jsDelivr CDN
 							&nbsp;
