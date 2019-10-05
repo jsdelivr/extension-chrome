@@ -2,15 +2,42 @@ import React from 'dom-chef';
 import onDomReady from 'dom-loaded';
 
 import { isGitHub, isRepoRoot } from '../libs/page-detect';
-import { getRepoDetails, hasJSExtension } from '../libs/utils';
+import { getRepoDetails, hasJSExtension, memo } from '../libs/utils';
 import { clippy } from '../libs/icons';
 
 import './github-download-button.css';
 
-async function init () {
-	await onDomReady;
+(function () {
+	async function getPackageName (ownerName, repoName, treeName) {
+		const rawPackageUrl = `https://raw.githubusercontent.com/${ownerName}/${repoName}/${treeName}/package.json`;
+		const rawPackageResponse = await fetch(rawPackageUrl);
+		const { name } = await rawPackageResponse.json();
 
-	if (isGitHub()) {
+		return name;
+	}
+
+	// eslint-disable-next-line no-unused-vars
+	async function getPackageVersion (name, treeName) {
+		const packageVersionsUrl = `https://data.jsdelivr.com/v1/package/npm/${name}`;
+		const packageVersionsResponse = await fetch(packageVersionsUrl);
+		const { tags, versions } = await packageVersionsResponse.json();
+
+		const version = tags.latest ? tags.latest : versions[0];
+
+		return version;
+	}
+
+	async function getDefaultFile (name, version) {
+		const packageFilesUrl = `https://data.jsdelivr.com/v1/package/npm/${name}@${version}`;
+		const packageFilesResponse = await fetch(packageFilesUrl);
+		const { default: defaultFile } = await packageFilesResponse.json();
+
+		return defaultFile;
+	}
+
+	async function init () {
+		await onDomReady;
+
 		if (isRepoRoot()) {
 			try {
 				if (document.querySelector('.jsd-get-repo-select-menu')) {
@@ -19,23 +46,15 @@ async function init () {
 
 				const { ownerName, repoName, treeName } = getRepoDetails();
 
-				const rawPackageUrl = `https://raw.githubusercontent.com/${ownerName}/${repoName}/${treeName}/package.json`;
-				const rawPackageResponse = await fetch(rawPackageUrl);
-				const { name } = await rawPackageResponse.json();
+				const name = await getPackageNameMemo(ownerName, repoName, treeName);
 
 				if (!name) {
 					return;
 				}
 
-				const packageVersionsUrl = `https://data.jsdelivr.com/v1/package/npm/${name}`;
-				const packageVersionsResponse = await fetch(packageVersionsUrl);
-				const { tags, versions } = await packageVersionsResponse.json();
+				const version = await getPackageVersionMemo(name, treeName);
 
-				const version = tags.latest ? tags.latest : versions[0];
-
-				const packageFilesUrl = `https://data.jsdelivr.com/v1/package/npm/${name}@${version}`;
-				const packageFilesResponse = await fetch(packageFilesUrl);
-				const { default: defaultFile } = await packageFilesResponse.json();
+				const defaultFile = await getDefaultFileMemo(name, version);
 
 				// Validate file name, since `bootstrap`
 				// has default file name without `.js` extension
@@ -130,8 +149,17 @@ async function init () {
 			}
 		}
 	}
-}
 
-init();
+	let getPackageNameMemo;
+	let getPackageVersionMemo;
+	let getDefaultFileMemo;
 
-document.addEventListener('pjax:end', init);
+	if (isGitHub()) {
+		getPackageNameMemo = memo(getPackageName);
+		getPackageVersionMemo = memo(getPackageVersion);
+		getDefaultFileMemo = memo(getDefaultFile);
+
+		init();
+		document.addEventListener('pjax:end', init);
+	}
+})();

@@ -25,3 +25,21 @@ export const getRepoDetails = () => {
 // '/dist/index.min.js' -> true
 // '/dist/index'        -> false
 export const hasJSExtension = filename => /(\.js)$/.test(filename);
+
+// Memoize function to store results of API calls
+// and return cached result for same inputs
+export const memo = (fn) => {
+	const cacheStore = new Map();
+
+	return async (...args) => {
+		const key = args.join('|');
+
+		if (cacheStore.has(key)) {
+			return cacheStore.get(key);
+		}
+
+		const result = await fn.call(null, ...args);
+		cacheStore.set(key, result);
+		return result;
+	};
+};
