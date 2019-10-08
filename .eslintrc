@@ -1,3 +1,33 @@
 {
-	"extends": "@martin-kolarik/eslint-config"
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"extends": "@martin-kolarik/eslint-config",
+	"overrides": [
+		{
+			"files": [
+				"src/**/*.js",
+				"test/**/*.js"
+			],
+			"rules": {
+				"no-unused-vars": [
+					"error",
+					{
+						"varsIgnorePattern": "^React$"
+					}
+				],
+				"no-extra-parens": [
+					"error",
+					"all",
+					{
+						"ignoreJSX": "multi-line"
+					}
+				]
+			}
+		}
+	]
 }
