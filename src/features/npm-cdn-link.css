@@ -1,0 +1,112 @@
+/* Copy npm css since npm minifies their class names */
+
+.jsd-npm-title {
+	font-size: 1rem;
+	color: rgba(0, 0, 0, .5);
+	padding-top: .5rem;
+	margin-top: .5rem;
+	margin-bottom: 0;
+}
+
+.jsd-npm-link-container {
+	border: 1px #e8e8e8 solid;
+	border-left: 6px #e1e1e1 solid;
+	padding: 5px 1rem;
+	max-width: 95vw;
+	margin-top: .875rem;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	border-radius: .25rem;
+	box-sizing: border-box;
+}
+
+.jsd-npm-link-input {
+	width: 100%;
+	border: 0;
+	font-family: "Fira Mono", "Andale Mono", Consolas, monospace;
+	letter-spacing: 0;
+	-webkit-font-feature-settings: none;
+	font-feature-settings: none;
+	-webkit-font-variant-ligatures: none;
+	font-variant-ligatures: none;
+	line-height: 22px;
+	font-size: .875rem;
+	color: rgba(0, 0, 0, .8);
+}
+
+.jsd-npm-link-input:hover {
+	background-color: #accef7;
+}
+
+.jsd-npm-link-input:focus {
+	border: none;
+	outline: none;
+}
+
+.jsd-npm-no-file-container {
+	margin-top: .5rem;
+}
+
+.jsd-npm-no-file-message {
+	color: #333;
+	letter-spacing: .25px;
+	line-height: 22px;
+	margin: 0;
+}
+
+.jsd-npm-button {
+	background-image: linear-gradient(-180deg, rgba(255, 255, 255, .09) 0%, rgba(247, 102, 65, .1) 97%);
+	border: 1px solid rgba(253, 156, 128, .6);
+	color: #f96940;
+	background-color: #fff;
+	letter-spacing: .25px;
+	font-size: 1rem;
+	text-align: center;
+	text-decoration: none;
+	margin: .5rem;
+	margin-left: 0;
+	padding: .5rem 1rem;
+	font-weight: 500;
+	display: inline-block;
+	border-radius: .25rem;
+	box-sizing: border-box;
+}
+
+.jsd-npm-button:hover {
+	background-image: linear-gradient(-180deg, rgba(255, 255, 255, .18) 0%, rgba(247, 102, 65, .2) 97%);
+	border: 1px solid rgba(253, 156, 128, .5);
+	color: #ec4b1e;
+}
+
+.jsd-npm-toast-container {
+	width: 100%;
+	padding: 1rem 4rem;
+	font-family: "Source Sans Pro", "Lucida Grande", sans-serif;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	background-color: #dbffdb;
+	color: #3d8f3d;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	transition: opacity 1s linear;
+	box-sizing: border-box;
+	user-select: none;
+	cursor: pointer;
+}
+
+.jsd-npm-toast-message {
+	margin: 0;
+}
+
+.jsd-npm-toast-close-btn {
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1rem;
+	height: 1rem;
+	margin: 0;
+}

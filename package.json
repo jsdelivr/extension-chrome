@@ -38,6 +38,7 @@
 		"webpack-cli": "^3.3.9"
 	},
 	"dependencies": {
+		"copy-text-to-clipboard": "^2.1.1",
 		"dom-chef": "^3.6.2",
 		"dom-loaded": "^2.0.0"
 	}

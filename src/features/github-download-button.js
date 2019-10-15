@@ -2,7 +2,7 @@ import React from 'dom-chef';
 import onDomReady from 'dom-loaded';
 
 import { isGitHub, isRepoRoot } from '../libs/page-detect';
-import { getRepoDetails, hasJSExtension, memo } from '../libs/utils';
+import { getRepoDetails, hasJSExtension, memo, getPackageVersion, getDefaultFile } from '../libs/utils';
 import { clippy } from '../libs/icons';
 
 import './github-download-button.css';
@@ -14,25 +14,6 @@ import './github-download-button.css';
 		const { name } = await rawPackageResponse.json();
 
 		return name;
-	}
-
-	// eslint-disable-next-line no-unused-vars
-	async function getPackageVersion (name, treeName) {
-		const packageVersionsUrl = `https://data.jsdelivr.com/v1/package/npm/${name}`;
-		const packageVersionsResponse = await fetch(packageVersionsUrl);
-		const { tags, versions } = await packageVersionsResponse.json();
-
-		const version = tags.latest ? tags.latest : versions[0];
-
-		return version;
-	}
-
-	async function getDefaultFile (name, version) {
-		const packageFilesUrl = `https://data.jsdelivr.com/v1/package/npm/${name}@${version}`;
-		const packageFilesResponse = await fetch(packageFilesUrl);
-		const { default: defaultFile } = await packageFilesResponse.json();
-
-		return defaultFile;
 	}
 
 	async function init () {

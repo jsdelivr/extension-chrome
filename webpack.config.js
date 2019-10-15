@@ -11,7 +11,9 @@ module.exports = {
 		builtAt: true,
 	},
 	entry: {
-		content: './src/content'
+		content: './src/content',
+		'content-npm': './src/content-npm',
+		background: './src/background'
 	},
 	output: {
 		path: path.join(__dirname, 'build'),
