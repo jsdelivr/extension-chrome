@@ -37,6 +37,10 @@ export async function getDefaultFile (name, version) {
 	const packageFilesResponse = await fetch(packageFilesUrl);
 	const { default: defaultFile, files } = await packageFilesResponse.json();
 
+	if (!defaultFile) {
+		return '';
+	}
+
 	const nonMinifiedFile = defaultFile.replace(/\.min\.(js|css)$/i, '.$1');
 	const hasDefaultFile = files.some((file) => {
 		return file.name === defaultFile || file.name === nonMinifiedFile;
