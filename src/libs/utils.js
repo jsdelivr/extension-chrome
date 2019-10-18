@@ -21,11 +21,6 @@ export const getRepoDetails = () => {
 	};
 };
 
-// Check for `.js` extension
-// '/dist/index.min.js' -> true
-// '/dist/index'        -> false
-export const hasJSExtension = filename => /(\.js)$/.test(filename);
-
 // eslint-disable-next-line no-unused-vars
 export async function getPackageVersion (name, treeName) {
 	const packageVersionsUrl = `https://data.jsdelivr.com/v1/package/npm/${name}`;
@@ -38,11 +33,20 @@ export async function getPackageVersion (name, treeName) {
 }
 
 export async function getDefaultFile (name, version) {
-	const packageFilesUrl = `https://data.jsdelivr.com/v1/package/npm/${name}@${version}`;
+	const packageFilesUrl = `https://data.jsdelivr.com/v1/package/npm/${name}@${version}/flat`;
 	const packageFilesResponse = await fetch(packageFilesUrl);
-	const { default: defaultFile } = await packageFilesResponse.json();
+	const { default: defaultFile, files } = await packageFilesResponse.json();
 
-	return defaultFile;
+	const nonMinifiedFile = defaultFile.replace(/\.min\.(js|css)$/i, '.$1');
+	const hasDefaultFile = files.some((file) => {
+		return file.name === defaultFile || file.name === nonMinifiedFile;
+	});
+
+	if (hasDefaultFile) {
+		return defaultFile;
+	}
+
+	return '';
 }
 
 // Memoize function to store results of API calls

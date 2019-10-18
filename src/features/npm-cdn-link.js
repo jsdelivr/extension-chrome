@@ -3,7 +3,7 @@ import copy from 'copy-text-to-clipboard';
 
 import { isPackageRoot } from '../libs/npm-page-detect';
 import { getPackageDetails } from '../libs/npm-utils';
-import { memo, getPackageVersion, getDefaultFile, hasJSExtension } from '../libs/utils';
+import { memo, getPackageVersion, getDefaultFile } from '../libs/utils';
 
 import './npm-cdn-link.css';
 
@@ -136,9 +136,7 @@ chrome.runtime.onMessage.addListener(async (request) => {
 
 		const defaultFile = await getDefaultFileMemo(name, version);
 
-		// Validate file name, since `bootstrap`
-		// has default file name without `.js` extension
-		const cdnUrl = defaultFile && hasJSExtension(defaultFile) ? `https://cdn.jsdelivr.net/npm/${name}@${version}${defaultFile}` : '';
+		const cdnUrl = defaultFile ? `https://cdn.jsdelivr.net/npm/${name}@${version}${defaultFile}` : '';
 
 		setCDNLink({
 			name,
