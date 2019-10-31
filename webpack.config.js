@@ -11,7 +11,7 @@ module.exports = {
 		builtAt: true,
 	},
 	entry: {
-		content: './src/content',
+		'content-github': './src/content-github',
 		'content-npm': './src/content-npm',
 		background: './src/background'
 	},
