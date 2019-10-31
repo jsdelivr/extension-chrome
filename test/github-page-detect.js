@@ -1,9 +1,9 @@
 import chai from 'chai';
-import { isGitHub, isRepoRootMaster, isRepoRootTree } from '../src/libs/page-detect';
+import { isGitHub, isRepoRootMaster, isRepoRootTree } from '../src/libs/github-page-detect';
 
 const assert = chai.assert;
 
-describe('page-detect', () => {
+describe('github-page-detect', () => {
 	describe('isGitHub', () => {
 		it('should detect if current page is GitHub', () => {
 			location.href = 'https://github.com/jquery/jquery';

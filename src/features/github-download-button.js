@@ -1,8 +1,9 @@
 import React from 'dom-chef';
 import onDomReady from 'dom-loaded';
 
-import { isGitHub, isRepoRoot } from '../libs/page-detect';
-import { getRepoDetails, memo, getPackageVersion, getDefaultFile } from '../libs/utils';
+import { isGitHub, isRepoRoot } from '../libs/github-page-detect';
+import { memo, getPackageVersion, getDefaultFile } from '../libs/utils';
+import { getRepoDetails } from '../libs/github-utils';
 import { clippy } from '../libs/icons';
 
 import './github-download-button.css';

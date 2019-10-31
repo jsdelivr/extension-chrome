@@ -21,10 +21,10 @@
 				"https://github.com/*"
 			],
 			"css": [
-				"content.css"
+				"content-github.css"
 			],
 			"js": [
-				"content.js"
+				"content-github.js"
 			]
 		},
 		{
