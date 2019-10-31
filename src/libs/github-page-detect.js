@@ -4,8 +4,6 @@
 import { getCleanPathname } from './utils';
 import { getRepoPath } from './github-utils';
 
-export const isGitHub = () => location.hostname === 'github.com';
-
 // 'user/repo'            -> true
 // 'user/repo/tree/1.0.0' -> false
 export const isRepoRootMaster = () => /^[^/]+\/[^/]+$/.test(getCleanPathname());

@@ -1,19 +1,9 @@
 import chai from 'chai';
-import { isGitHub, isRepoRootMaster, isRepoRootTree } from '../src/libs/github-page-detect';
+import { isRepoRootMaster, isRepoRootTree } from '../src/libs/github-page-detect';
 
 const assert = chai.assert;
 
 describe('github-page-detect', () => {
-	describe('isGitHub', () => {
-		it('should detect if current page is GitHub', () => {
-			location.href = 'https://github.com/jquery/jquery';
-			assert.isTrue(isGitHub());
-
-			location.href = 'https://www.npmjs.com/package/jquery';
-			assert.isFalse(isGitHub());
-		});
-	});
-
 	describe('isRepoRootMaster', () => {
 		it('should detect if current page is a root of a GitHub repository on master branch', () => {
 			const masterRootRepos = [
