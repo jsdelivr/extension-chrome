@@ -29,5 +29,8 @@
 				]
 			}
 		}
-	]
+	],
+	"globals": {
+		"chrome": false
+	}
 }

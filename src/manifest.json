@@ -10,6 +10,7 @@
 		"default_icon": "icon.png"
 	},
 	"permissions": [
+		"activeTab",
 		"https://github.com/*",
 		"https://www.npmjs.com/*"
 	],
@@ -17,8 +18,7 @@
 		{
 			"run_at": "document_start",
 			"matches": [
-				"https://github.com/*",
-				"https://www.npmjs.com/*"
+				"https://github.com/*"
 			],
 			"css": [
 				"content.css"
@@ -26,6 +26,24 @@
 			"js": [
 				"content.js"
 			]
+		},
+		{
+			"run_at": "document_start",
+			"matches": [
+				"https://www.npmjs.com/*"
+			],
+			"css": [
+				"content-npm.css"
+			],
+			"js": [
+				"content-npm.js"
+			]
 		}
-	]
+	],
+	"background": {
+		"scripts": [
+			"background.js"
+		],
+		"persistent": false
+	}
 }
