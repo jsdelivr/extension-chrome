@@ -22,12 +22,33 @@ npm run watch # Listen for file changes and automatically rebuild
 
 ## Loading into the browser
 
-Once built, load it in the browser with below instructions:
+Once built, load it in the browser of your choice:
 
-1. Open **chrome://extensions**
-2. Check the **Developer mode** checkbox
-3. Click on the **Load unpacked extension** button
-4. Select the folder **extension-chrome/build**
+<table>
+	<tr>
+		<th>Chrome</th>
+		<th>Firefox</th>
+	</tr>
+	<tr>
+		<td width="50%" valign="top">
+			<ol>
+				<li>Open <code>chrome://extensions</code>;
+				<li>Check the <strong>Developer mode</strong> checkbox;
+				<li>Click on the <strong>Load unpacked extension</strong> button;
+				<li>Select the folder <code>extension-chrome/build</code>.
+			</ol>
+		</td>
+		<td width="50%" valign="top">
+			<ol>
+				<li>Open <code>about:debugging#addons</code>;
+				<li>Click on the <strong>Load Temporary Add-on</strong> button;
+				<li>Select the file <code>extension-chrome/build/manifest.json</code>.
+			</ol>
+			Or you can use this command to have Firefox automatically load and reload it through <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/web-ext_command_reference#web-ext_run"><code>web-ext run</code></a>:</p>
+			<pre>npm run watch:firefox</pre>
+		</td>
+	</tr>
+</table>
 
 ---
 
