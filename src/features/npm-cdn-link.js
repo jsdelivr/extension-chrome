@@ -116,7 +116,7 @@ function setToast ({ message = '' }) {
 	}, 2000);
 }
 
-chrome.runtime.onMessage.addListener(async (request) => {
+browser.runtime.onMessage.addListener(async (request) => {
 	const { type } = request;
 
 	if (type === 'TAB_UPDATE' && hasRouteChanged() && isPackageRoot()) {

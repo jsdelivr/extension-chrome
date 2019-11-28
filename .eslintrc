@@ -31,6 +31,6 @@
 		}
 	],
 	"globals": {
-		"chrome": false
+		"browser": false
 	}
 }

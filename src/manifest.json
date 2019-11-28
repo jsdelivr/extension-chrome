@@ -10,9 +10,11 @@
 		"default_icon": "icon.png"
 	},
 	"permissions": [
-		"activeTab",
+		"tabs",
 		"https://github.com/*",
-		"https://www.npmjs.com/*"
+		"https://www.npmjs.com/*",
+		"https://raw.githubusercontent.com/*",
+		"https://data.jsdelivr.com/*"
 	],
 	"content_scripts": [
 		{
@@ -36,12 +38,14 @@
 				"content-npm.css"
 			],
 			"js": [
+				"browser-polyfill.min.js",
 				"content-npm.js"
 			]
 		}
 	],
 	"background": {
 		"scripts": [
+			"browser-polyfill.min.js",
 			"background.js"
 		],
 		"persistent": false
