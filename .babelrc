@@ -6,11 +6,13 @@
 			],
 			"plugins": [
 				"@babel/plugin-transform-react-jsx",
-				"@babel/plugin-transform-runtime"
+				"@babel/plugin-transform-runtime",
+				"@babel/plugin-transform-named-capturing-groups-regex"
 			]
 		}
 	},
 	"plugins": [
-		"@babel/plugin-transform-react-jsx"
+		"@babel/plugin-transform-react-jsx",
+		"@babel/plugin-transform-named-capturing-groups-regex"
 	]
 }

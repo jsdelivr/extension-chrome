@@ -1,6 +1,6 @@
 import { isNpm } from './libs/npm-page-detect';
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 	const { status, url } = tab;
 
 	if (!url) {
@@ -18,6 +18,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 			type: 'TAB_UPDATE',
 		};
 
-		chrome.tabs.sendMessage(tabId, message);
+		browser.tabs.sendMessage(tabId, message);
 	}
 });

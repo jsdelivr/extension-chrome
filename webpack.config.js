@@ -42,6 +42,9 @@ module.exports = {
 					'*.js',
 					'*.css'
 				]
+			},
+			{
+				from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
 			}
 		]),
 		new MiniCssExtractPlugin({
