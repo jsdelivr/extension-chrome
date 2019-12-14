@@ -4,6 +4,7 @@ import copy from 'copy-text-to-clipboard';
 import { isPackageRoot } from '../libs/npm-page-detect';
 import { getPackageDetails } from '../libs/npm-utils';
 import { memo, getPackageVersion, getDefaultFile } from '../libs/utils';
+import { caretRight, copy as copyIcon } from '../libs/icons';
 
 import './npm-cdn-link.css';
 
@@ -45,22 +46,24 @@ function setCDNLink ({ name, cdnUrl }) {
 	function handleLinkClick () {
 		copy(cdnUrl);
 		setToast({
-			message: 'Copied to clipboard!',
+			message: '✔ Copied to clipboard!',
 		});
 	}
 
 	const link = (
 		<div id="jsd-npm-container">
-			<h3 class="jsd-npm-title">jsdelivr cdn</h3>
+			<h3 class="jsd-npm-title">jsDelivr CDN</h3>
 			{cdnUrl
 				? (
-					<div class="jsd-npm-link-container">
+					<div class="jsd-npm-link-container" title="Copy Command to Clipboard">
+						{caretRight()}
 						<input
 							class="jsd-npm-link-input"
 							value={cdnUrl}
 							onClick={handleLinkClick}
 							readonly
 						/>
+						{copyIcon()}
 					</div>
 				)
 				: (

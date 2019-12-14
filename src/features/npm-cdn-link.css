@@ -9,20 +9,54 @@
 }
 
 .jsd-npm-link-container {
-	border: 1px #e8e8e8 solid;
-	border-left: 6px #e1e1e1 solid;
-	padding: 5px 1rem;
+	position: relative;
+	height: 46px;
+	font-size: .875rem;
 	max-width: 95vw;
 	margin-top: .875rem;
 	margin-bottom: 1rem;
 	display: flex;
 	flex-direction: row;
-	border-radius: .25rem;
+	align-items: center;
+	border: 1px #ccc solid;
+	border-radius: 5px;
 	box-sizing: border-box;
+}
+
+.jsd-npm-link-container svg {
+	width: .9em;
+	height: .9em;
+	position: absolute;
+	flex: none;
+	fill: rgba(0, 0, 0, .5);
+}
+
+.jsd-npm-link-container .caret-icon {
+	top: 16px;
+	left: 18px;
+}
+
+.jsd-npm-link-container .copy-icon {
+	top: 15px;
+	right: 18px;
+	opacity: 0;
+	transition: opacity .2s linear;
+}
+
+.jsd-npm-link-container:hover {
+	cursor: pointer;
+	background: hsl(120, 100%, 93%);
+	border-color: #00c642;
+}
+
+.jsd-npm-link-container:hover .copy-icon {
+	opacity: 1;
 }
 
 .jsd-npm-link-input {
 	width: 100%;
+	padding-right: 34px;
+	padding-left: 34px;
 	border: 0;
 	font-family: "Fira Mono", "Andale Mono", Consolas, monospace;
 	letter-spacing: 0;
@@ -30,13 +64,11 @@
 	font-feature-settings: none;
 	-webkit-font-variant-ligatures: none;
 	font-variant-ligatures: none;
-	line-height: 22px;
+	line-height: .875rem;
 	font-size: .875rem;
 	color: rgba(0, 0, 0, .8);
-}
-
-.jsd-npm-link-input:hover {
-	background-color: #accef7;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 .jsd-npm-link-input:focus {
@@ -91,7 +123,7 @@
 	left: 0;
 	z-index: 999;
 	background-color: #dbffdb;
-	color: #3d8f3d;
+	color: #107010;
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
 	transition: opacity 1s linear;
 	box-sizing: border-box;
