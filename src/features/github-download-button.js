@@ -48,7 +48,7 @@ async function init () {
 					</summary>
 
 					<div class="position-relative">
-						<div class="get-repo-modal dropdown-menu dropdown-menu-sw pb-0">
+						<div class="get-repo-modal dropdown-menu dropdown-menu-sw pb-0" style={{ top: '6px', width: '352px' }}>
 							<div class="get-repo-modal-options">
 								<div class="clone-options">
 									<h4 class="mb-1">
