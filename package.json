@@ -1,6 +1,7 @@
 {
 	"name": "jsdelivr-extension",
 	"version": "0.1.0",
+	"license": "OSL-3.0",
 	"description": "A jsDelivr Extension for npm and GitHub",
 	"scripts": {
 		"lint": "npm run lint:css && npm run lint:js",
