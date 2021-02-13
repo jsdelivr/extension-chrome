@@ -12,7 +12,7 @@ export const isRepoRootMaster = () => /^[^/]+\/[^/]+$/.test(getCleanPathname());
 // '/user/repo/tree/1.0.0/lib' -> false
 export const isRepoRootTree = () => /^(tree[/][^/]+)?$/.test(getRepoPath());
 
-const hasCloneButton = () => Boolean(document.getElementsByTagName('get-repo-controller').length);
+const hasCloneButton = () => Boolean(document.getElementsByTagName('get-repo').length);
 
 export const isRepoRoot = () => {
 	return (isRepoRootMaster() || isRepoRootTree()) && hasCloneButton();
