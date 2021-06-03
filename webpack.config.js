@@ -44,6 +44,10 @@ module.exports = {
 				]
 			},
 			{
+				from: 'popup.css',
+				context: 'src',
+			},
+			{
 				from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
 			}
 		]),
